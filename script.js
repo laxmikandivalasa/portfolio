@@ -101,6 +101,7 @@ const skillsByCategory = {
 	  { name: "JavaScript", percent: 85 },
 	  { name: "React", percent: 70 },
 	  { name: "Tailwind CSS", percent: 80 },
+	  {name: "Bootstrap", percent:50},
 	],
 	backend: [
 	  { name: "Node.js", percent: 70 },
