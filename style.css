@@ -823,7 +823,7 @@
   }
   @media (max-width: 768px) {
     .navbar {
-      flex-direction: column;
+      flex-direction: row;
       align-items: flex-start;
     }
   }
@@ -833,6 +833,10 @@
       font-size: 1rem;
       margin: 0 0.5rem;
       letter-spacing: 0.1rem;
+    }
+      iframe {
+      width: 100%;
+     
     }
   }
   .section-2 {
