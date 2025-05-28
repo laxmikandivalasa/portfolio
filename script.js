@@ -93,77 +93,82 @@ function Type() {
 	}
 }
 
-
 const skillsByCategory = {
-	frontend: [
-	  { name: "HTML", percent: 97 },
-	  { name: "CSS", percent: 90 },
-	  { name: "JavaScript", percent: 85 },
-	  { name: "React", percent: 70 },
-	  { name: "Tailwind CSS", percent: 80 },
-	  {name: "Bootstrap", percent:50},
-	],
-	backend: [
-	  { name: "Node.js", percent: 70 },
-	  { name: "Express", percent: 65 },
-	  { name: "MongoDB", percent: 60 },
-	  { name: "MySQL", percent: 75 },
-	],
-	ml: [
-	  { name: "Python", percent: 80 },
-	  { name: "Scikit-learn", percent: 60 },
-	  { name: "Pandas/Numpy", percent: 70 },
-	  { name: "Matplotlib", percent: 60 },
-	],
-	soft: [
-	  { name: "Communication", percent: 85 },
-	  { name: "Teamwork", percent: 90 },
-	  { name: "Time Management", percent: 80 },
-	],
-	others: [
-	  { name: "Git & GitHub", percent: 80 },
-	  { name: "C / C++", percent: 85 },
-	  { name: "Canva", percent: 80 },
-	  { name: "Postman", percent: 70 },
-	]
-  };
-  
-  function renderSkills(category) {
-	const skillsContainer = document.getElementById("skills-container");
-	skillsContainer.innerHTML = "";
-	const skills = skillsByCategory[category];
-  
-	skills.forEach(skill => {
-	  const skillHTML = `
-		<div class="progress-bar">
-		  <p class="progress-text">${skill.name} <span>${skill.percent}</span>%</p>
-		  <div class="progress-percent" style="width: 0;"></div>
-		</div>
-	  `;
-	  skillsContainer.innerHTML += skillHTML;
+    frontend: [
+        { name: "HTML", icon: '<i class="devicon-html5-plain colored"></i>' },
+        { name: "CSS", icon: '<i class="devicon-css3-plain colored"></i>' },
+        { name: "JavaScript", icon: '<i class="devicon-javascript-plain colored"></i>' },
+        { name: "React", icon: '<i class="devicon-react-original colored"></i>' },
+        { name: "Tailwind CSS", icon: '<i class="devicon-tailwindcss-plain colored"></i>' },
+        { name: "Bootstrap", icon: '<i class="devicon-bootstrap-plain colored"></i>' },
+    ],
+    backend: [
+        { name: "Node.js", icon: '<i class="devicon-nodejs-plain colored"></i>' },
+        { name: "Express", icon: '<i class="devicon-express-original colored"></i>' },
+        { name: "MongoDB", icon: '<i class="devicon-mongodb-plain colored"></i>' },
+        { name: "MySQL", icon: '<i class="devicon-mysql-plain colored"></i>' },
+    ],
+    ml: [
+        { name: "Python", icon: '<i class="devicon-python-plain colored"></i>' },
+        { name: "Scikit-learn", icon: '<i class="devicon-scikit-learn-plain colored"></i>' },
+        { name: "Pandas/Numpy", icon: '<i class="devicon-numpy-original colored"></i>' },
+        { name: "Matplotlib", icon: '<i class="fas fa-chart-bar"></i>' },
+    ],
+    soft: [
+        { name: "Communication", icon: '<i class="fas fa-comments"></i>' },
+        { name: "Teamwork", icon: '<i class="fas fa-users"></i>' },
+        { name: "Time Management", icon: '<i class="fas fa-clock"></i>' },
+    ],
+    others: [
+        { name: "Git & GitHub", icon: '<i class="devicon-git-plain colored"></i>' },
+        { name: "C / C++", icon: '<i class="devicon-cplusplus-plain colored"></i>' },
+		{ name: "Canva", icon: '<img src="canva.jpeg" alt="Canva" style="width: 60px; height: 60px;">' },
+		{ name: "Postman", icon: '<img src="postmanlogo.png" alt="postman" style="width: 60px; height: 60px;">' },
+    ],
+};
+
+function renderSkills(category) {
+    const skillsContainer = document.getElementById("skills-container");
+    skillsContainer.innerHTML = "";
+    const skills = skillsByCategory[category];
+
+    skills.forEach(skill => {
+        const skillHTML = `
+            <div class="skill-icon">
+                ${skill.icon}
+                <p>${skill.name}</p>
+            </div>
+        `;
+        skillsContainer.innerHTML += skillHTML;
+    });
+}
+
+// Handle button clicks
+document.querySelectorAll(".category-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+        document.querySelectorAll(".category-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        renderSkills(btn.dataset.category);
+    });
+});
+
+// Load default
+newFunction();
+function newFunction() {
+	document.addEventListener("DOMContentLoaded", () => {
+		renderSkills("frontend");
 	});
-  
-	// Animate progress bars
-	setTimeout(() => {
-	  const bars = document.querySelectorAll(".progress-percent");
-	  bars.forEach((bar, i) => {
-		bar.style.width = `${skills[i].percent}%`;
-	  });
-	}, 100);
-  }
-  
-  // Handle button clicks
-  document.querySelectorAll(".category-btn").forEach(btn => {
-	btn.addEventListener("click", () => {
-	  document.querySelectorAll(".category-btn").forEach(b => b.classList.remove("active"));
-	  btn.classList.add("active");
-	  renderSkills(btn.dataset.category);
+
+	document.addEventListener("DOMContentLoaded", () => {
+		const hamburger = document.getElementById('hamburger-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+      
+        hamburger.addEventListener('click', () => {
+          mobileMenu.classList.toggle('show');
+        });
 	});
-  });
-  
-  // Load default
-  renderSkills("frontend");
-  
+}
+
 // Implements deleting effect
 function Delete() {
 	// Get substring with 1 characater deleted

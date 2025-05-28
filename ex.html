@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@2.15.1/devicon.min.css">
+    <style>
+        .skill-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 1.5rem;
+            width: 8rem;
+            height: 8rem;
+            background-color: #f9f9f9;
+            border: 2px solid #ddd;
+            border-radius: 1rem;
+            box-shadow: 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-icon i {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .skill-icon p {
+            font-size: 1.4rem;
+            color: #555;
+            text-align: center;
+        }
+
+        .skill-icon:hover {
+            transform: scale(1.1);
+            box-shadow: 0.3rem 0.3rem 1rem rgba(0, 0, 0, 0.2);
+        }
+    </style>
+    <title>Test Icons</title>
+</head>
+<body>
+    <div id="skills-container"></div>
+    <script>
+        const skills = [
+            { name: "HTML", icon: '<i class="devicon-html5-plain colored"></i>' },
+            { name: "CSS", icon: '<i class="devicon-css3-plain colored"></i>' },
+            { name: "JavaScript", icon: '<i class="devicon-javascript-plain colored"></i>' }
+        ];
+
+        const skillsContainer = document.getElementById("skills-container");
+        skills.forEach(skill => {
+            const skillHTML = `
+                <div class="skill-icon">
+                    ${skill.icon}
+                    <p>${skill.name}</p>
+                </div>
+            `;
+            skillsContainer.innerHTML += skillHTML;
+        });
+    </script>
+</body>
+</html>
